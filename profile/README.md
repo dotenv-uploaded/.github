@@ -8,56 +8,59 @@
 </p>
 
 <p align="center">
-  Reads your documents, connects them,<br />
-  and changes nothing without your approval.
+  <strong>Your work is already in your documents. Folding helps you find it, connect it, and change it safely.</strong><br />
+  A local-first desktop workspace for HWP, Office, PDF, and the folders around them.
 </p>
 
 <p align="center">
-  <a href="https://github.com/dotenv-uploaded/_FOLDING_"><strong>Source code »</strong></a>
+  <a href="https://github.com/dotenv-uploaded/_FOLDING_"><strong>Explore Folding</strong></a> ·
+  <a href="https://github.com/dotenv-uploaded/_FOLDING_#running-locally">Run locally</a> ·
+  <a href="https://github.com/dotenv-uploaded/_FOLDING_/actions/workflows/desktop-installers.yml">Desktop builds</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/dotenv-uploaded/_FOLDING_#knowledge-graph">Knowledge graph</a> ·
-  <a href="https://github.com/dotenv-uploaded/_FOLDING_#editing-documents">Document writers</a> ·
-  <a href="https://github.com/dotenv-uploaded/_FOLDING_#approval-gate">Approval gate</a> ·
-  <a href="https://github.com/dotenv-uploaded/_FOLDING_#architecture">Architecture</a> ·
-  <a href="https://github.com/dotenv-uploaded/_FOLDING_/actions/workflows/desktop-installers.yml">Installers</a>
+  <img src="./assets/folding-graph.png" width="100%" alt="Folding showing 119 local documents as evidence-backed relationship networks" />
 </p>
 
-<p align="center">
-  <img src="./assets/folding-graph.png" width="100%" alt="Folding's knowledge graph: 119 documents and 285 relationships, colored by connected network" />
-</p>
+## One workspace from question to finished document
 
-<p align="center"><sub>119 documents, 285 relationships. The colors are networks, not decoration.</sub></p>
+Choose a folder on your computer. Folding turns the supported files inside it into a searchable, versioned
+workspace without giving a cloud service general access to that folder. From the same desktop app, you can:
 
-### Relationships you can open and check
+1. **Ask across files.** Search HWP, Word, Excel, PowerPoint, PDF, CSV, HTML, Markdown, and text in natural
+   language, then trace an answer back to the source passage.
+2. **See how documents are related.** The graph connects files that share meaningful entities, groups them into
+   networks, and keeps the supporting sentence from both sides of every relationship.
+3. **Request a change in plain language.** Folding selects a format-specific writer, shows the intended action,
+   and waits when the request would change local state.
+4. **Keep the original safe.** A result is written to a new file, reopened, and checked. A failed operation does
+   not leave a partial document that looks complete.
 
-Converted HWP, DOCX and PDF files hold no links to one another, so counting explicit links would leave a
-graph of isolated dots. Folding derives relationships from **entities that several documents share**, and
-stores the sentence in which *each* side mentions them — expand a relationship and you read both, because
-entity overlap has no direction. Entities appearing in nearly every document are thrown away: they connect
-everything and distinguish nothing. Networks are named after the folder holding most of their members,
-never by hand, so a network dominated by personal names announces itself.
+## The graph explains itself
 
-### No API key. Nothing uploaded.
+The colors in the screenshot are document networks, not decoration: 119 documents form groups from 285
+relationships. Select a connection to see the entities the two files share and the sentence where each file
+mentions them. Entities that occur almost everywhere are removed, and each document keeps only its strongest
+neighbors, so the graph stays useful instead of connecting everything to everything.
 
-Conversion, analysis, retrieval and editing run on the machine in front of you, against a local model.
-Signing in establishes **who you are**. Choosing a folder establishes **what Folding may read**. Neither
-one implies the other.
+## Editing respects the format
 
-### The agent asks before it acts
+| Document | What Folding does |
+| --- | --- |
+| HWP | Updates values through an HWP-aware writer and exports a new `.hwp` file. |
+| DOCX · XLSX · PPTX | Edits paragraphs, cells, tables, or shapes with format-specific libraries. |
+| PDF | Produces an annotated copy instead of pretending the original body text is safely editable. |
 
-Rather than confining the agent to a short list of safe tools, every call passes an approval gate showing
-the intended action, its risk, and **the request you actually made**. Prompt injection cannot be detected
-perfectly, but an unexpected `rm` is obvious sitting next to "summarize this folder." No answer counts
-as no.
+Read and search operations can proceed without interruption. Creating, modifying, deleting, or reaching outside
+the app crosses an approval gate that shows the proposed action, its risk, and the request that led to it. No
+response means no approval.
 
-### Edits that cannot quietly corrupt a file
+## Local by default means a concrete boundary
 
-A generic text editor destroys HWP and DOCX layout, so every format gets its own writer. Each one leaves
-the source file untouched, reopens what it saved to confirm the change is really there, and never leaves
-partial output that looks finished. PDF gets an annotated copy — Folding does not pretend PDF body text is
-safely editable.
+In the default mode, conversion, analysis, retrieval, graph construction, and editing run on the user's computer.
+The supported local model is Gemma 4 through the loopback API provided by Ollama or LM Studio, so no third-party AI
+API key is required. Signing in can establish identity or licensing; it does not grant access to local folders.
+Folder access begins only when the user chooses one in the operating-system picker.
 
 <p align="center">
   <a href="https://github.com/ghdtjdwn">@ghdtjdwn</a> ·
