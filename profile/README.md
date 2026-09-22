@@ -1,11 +1,10 @@
 <p align="center">
   <a href="https://github.com/dotenv-uploaded/_FOLDING_">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dotenv-uploaded/_FOLDING_/main/docs/assets/folding-logo-white.png">
-      <img src="https://raw.githubusercontent.com/dotenv-uploaded/_FOLDING_/main/docs/assets/folding-logo.png" width="290" alt="Folding">
-    </picture>
+    <img src="https://raw.githubusercontent.com/dotenv-uploaded/_FOLDING_/main/docs/assets/folding-mark.png" width="104" alt="Folding mark">
   </a>
 </p>
+
+<h1 align="center">Folding</h1>
 
 <p align="center">
   <strong>Your work is already in your documents. Folding helps you find it, connect it, and change it safely.</strong><br />
